@@ -9,6 +9,7 @@ const SCREEN_OPTIONS = {
 const xvfb = new Xvfb();
 
 xvfb.start(function(){
+    console.log(arguments);
     run();
     xvfb.stop();
 });
