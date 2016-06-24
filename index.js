@@ -1,27 +1,35 @@
-const Xvfb = require('xvfb');
 const Nightmare = require('nightmare');
+const Xvfb = require('xvfb');
 
-const nightmare = Nightmare({ show: false });
+const SCREEN_OPTIONS = {
+    width: 1280,
+    height: 700
+};
+
 const xvfb = new Xvfb();
 
-xvfb.start((err, xvfbProcess) => {
-    console.log(err, xvfbProcess);
-
-    nightmare
-        .goto('http://yahoo.com')
-        .type('form[action*="/search"] [name=p]', 'github nightmare')
-        .click('form[action*="/search"] [type=submit]')
-        .wait('#main')
-        .evaluate(function () {
-            return document.querySelector('#main .searchCenterMiddle li a').href
-        })
-        .end()
-        .then(function (result) {
-            console.log(result)
-        })
-        .catch(function (error) {
-            console.error('Search failed:', error);
-        });
-
+xvfb.start(function(){
+    run();
     xvfb.stop();
 });
+
+function run(){
+    var nightmare = new Nightmare({
+        width: 1280,
+        height: 700,
+        show: false,
+        waitTimeout: 6000
+    });
+
+    nightmare
+        .goto('http://www.google.es')
+        .evaluate(function(){
+            return document.title;
+        })
+        .end()
+        .then(function(l) {
+          console.log(l);
+        })
+}
+
+
