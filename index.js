@@ -1,20 +1,14 @@
 const Nightmare = require('nightmare');
 const Xvfb = require('xvfb');
-
-const SCREEN_OPTIONS = {
-    width: 1280,
-    height: 700
-};
-
-const xvfb = new Xvfb();
+const xvfb = new Xvfb({displayNum:99, reuse: true, silent: true});
 
 xvfb.start(function(){
-    console.log(arguments);
-    run();
-    xvfb.stop();
+    run(() => {
+        xvfb.stop();
+    });
 });
 
-function run(){
+function run(cb){
     var nightmare = new Nightmare({
         width: 1280,
         height: 700,
@@ -30,6 +24,7 @@ function run(){
         .end()
         .then(function(l) {
           console.log(l);
+            cb();
         })
 }
 
