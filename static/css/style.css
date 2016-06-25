@@ -1,0 +1,36 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+}
+
+.container {
+    width: 380px;
+}
+
+#loading {
+    display: none;
+}
+
+.res-block {
+    margin: 25px auto;
+}
+
+#raw {
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 12px;
+}
+.label {
+    font-size: 80%;
+}
+
+.thumb {
+    height: 108px;
+    box-shadow: 1px 1px 2px #aaa;
+    margin-right: 7px;
+}
+
+a image {
+
+}

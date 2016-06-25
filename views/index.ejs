@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crawler</title>
+
+    <link rel="stylesheet" href="/css/bs-theme.css"/>
+    <link rel="stylesheet" href="/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/css/lightbox.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<div class="container">
+
+    <form class="form-signin">
+        <h3 class="form-signin-heading">Данные для проверки</h3>
+        <br/>
+        <label for="inputQuery">Запрос</label>
+        <input type="text" id="inputQuery" class="form-control" placeholder="доставка цветов" required autofocus>
+        <br/>
+        <label for="inputUrl">Проверяемый домен</label>
+        <input type="text" id="inputUrl" class="form-control" placeholder="dostavka-cvety.ru" required>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Проверить позицию</button>
+    </form>
+
+    <div class="res-block">
+        <h4>Результат</h4>
+        <div id="res"></div>
+        <pre id="raw"></pre>
+    </div>
+
+    <div class="text-center text-muted" id="loading">
+        <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+    </div>
+
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/lightbox.min.js"></script>
+<script src="/js/scripts.js"></script>
+</body>
+</html>

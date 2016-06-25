@@ -9,6 +9,19 @@
   "author": "Deliaz",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.0.0-rc.6",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.6",
+    "cors": "^2.7.1",
+    "easyimage": "^2.1.0",
+    "ejs": "^2.4.2",
+    "express": "^4.14.0",
+    "express-cors": "0.0.3",
+    "font-awesome": "^4.6.3",
+    "gm": "^1.22.0",
+    "jquery": "^2.2.4",
+    "lightbox2": "^2.8.2",
+    "morgan": "^1.7.0",
     "nightmare": "^2.5.2",
     "xvfb": "^0.2.3"
   }
