@@ -114,6 +114,7 @@ module.exports = function(query, url, doneCallback) {
                     return JSON.stringify({links: linksArr});
                 })
                 .then(function (searchResult) {
+                    console.log(123);
                     try {
                         let json = JSON.parse(searchResult);
                         cb(json);
