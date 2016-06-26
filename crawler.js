@@ -33,6 +33,11 @@ module.exports = function(query, url, doneCallback) {
 
         nightmare
             .cookies.clear()
+            .on('console', function(msg) {
+                if(msg) {
+                    console.log(arguments);
+                }
+            })
             .goto(`https://yandex.ru/search/?text=${params.query}&lr=213`, {
                 headers: {
                     "Accept-Language": "en-US,en;q=0.8,ru;q=0.6",
@@ -108,18 +113,23 @@ module.exports = function(query, url, doneCallback) {
             nightmare
                 .screenshot(imagePath)
                 .evaluate(function () {
+                    console.log('Evaling code');
                     let links = document.querySelectorAll('.link.link_outer_yes.path__item:first-child[onmousedown]');
                     let linksArr = Array.from(links).map(link => link.innerText);
 
                     return JSON.stringify({links: linksArr});
                 })
                 .then(function (searchResult) {
+                    console.log('Parsing res');
                     try {
                         let json = JSON.parse(searchResult);
                         cb(json);
                     } catch (e) {
                         console.error(e);
                     }
+                })
+                .catch(function (error) {
+                    console.error('Search failed:', error);
                 });
         }
 
