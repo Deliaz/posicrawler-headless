@@ -2,7 +2,7 @@ const Nightmare = require('nightmare');
 const Xvfb = require('xvfb');
 const xvfb = new Xvfb({displayNum: 99, reuse: true, silent: true});
 
-module.exports = function(query, url, doneCallback) {
+module.exports = function (query, url, doneCallback) {
     let startTime;
     xvfb.start(function () {
         startTime = Date.now();
@@ -33,8 +33,8 @@ module.exports = function(query, url, doneCallback) {
 
         nightmare
             .cookies.clear()
-            .on('console', function(msg) {
-                if(msg) {
+            .on('console', function (msg) {
+                if (msg) {
                     console.log(arguments);
                 }
             })
@@ -43,6 +43,9 @@ module.exports = function(query, url, doneCallback) {
                     "Accept-Language": "en-US,en;q=0.8,ru;q=0.6",
                     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
                 }
+            })
+            .catch(function (error) {
+                console.error('Search failed:', error);
             });
 
 
@@ -65,7 +68,7 @@ module.exports = function(query, url, doneCallback) {
                 nightmare.end().then();
 
             } else {
-                if(incrimentPos >= 30) {
+                if (incrimentPos >= 30) {
                     doneCallback({
                         position: -1,
                         page_links: pageLinks,
@@ -91,7 +94,7 @@ module.exports = function(query, url, doneCallback) {
                     return 'false';
                 })
                 .then(nextUrl => {
-                    if(nextUrl !== 'false') {
+                    if (nextUrl !== 'false') {
                         nightmare
                             .goto(nextUrl)
                             .then(() => {
@@ -127,9 +130,6 @@ module.exports = function(query, url, doneCallback) {
                     } catch (e) {
                         console.error(e);
                     }
-                })
-                .catch(function (error) {
-                    console.error('Search failed:', error);
                 });
         }
 
@@ -155,7 +155,8 @@ module.exports = function(query, url, doneCallback) {
                 .toString(16)
                 .substring(1);
         }
-        return s4() + s4() + s4()+ s4() + s4() + s4();
+
+        return s4() + s4() + s4() + s4() + s4() + s4();
     }
 };
 
