@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "async": "^2.0.0-rc.6",
+    "basic-auth": "^1.0.4",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.6",
     "cors": "^2.7.1",

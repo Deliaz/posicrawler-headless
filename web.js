@@ -5,12 +5,26 @@ var path = require('path');
 var morgan = require('morgan');
 var easyimage = require('easyimage');
 var async = require('async');
+var basicAuth = require('basic-auth');
 
 var app = express();
 
 app.set('view engine', 'ejs');
 
 app.use(morgan('tiny'));
+
+app.use(function(req, res, next) {
+    var user = basicAuth(req);
+
+    if (user === undefined || user['name'] !== 'test' || user['pass'] !== 'Ohph3ref') {
+        res.statusCode = 401;
+        res.setHeader('WWW-Authenticate', 'Basic realm="ololo"');
+        res.end('Unauthorized');
+    } else {
+        next();
+    }
+});
+
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({extended: false}));
 
