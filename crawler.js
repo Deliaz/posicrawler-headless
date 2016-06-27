@@ -43,9 +43,6 @@ module.exports = function (query, url, doneCallback) {
                     "Accept-Language": "en-US,en;q=0.8,ru;q=0.6",
                     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
                 }
-            })
-            .catch(function (error) {
-                console.error('Search failed:', error);
             });
 
 

@@ -26,7 +26,7 @@ app.use(function(req, res, next) {
     }
 });
 
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static('static'));
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', function (req, res) {
